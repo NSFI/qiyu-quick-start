@@ -9,6 +9,7 @@ import { Modal, message } from 'antd';
 import ProjectNav from './components/ProjectNav';
 import ProjectPanel from './components/ProjectPanel';
 import Projects from './Projects';
+import util from './util/index';
 
 const { dialog } = remote;
 
@@ -88,7 +89,7 @@ class App extends Component {
 					projects: newProjects
 				})
 			project.tasks.forEach((task, taskIndex) => {
-				task && this.killProcess(task.pid);
+				task && util.killProcess(task.pid);
 				delete task.pid;
 				this.addLog(projectIndex, taskIndex, '任务已关闭');
 			})
@@ -133,17 +134,10 @@ class App extends Component {
 	killAll() {
 		this.state.projects.forEach((project) => {
 			project.tasks.forEach((task) => {
-				task.pid && this.killProcess(task.pid);
+				task.pid && util.killProcess(task.pid);
 				delete task.pid;
 			})
 		})
-	}
-	killProcess(pid) {
-		if (/^win/.test(process.platform)) {
-			child_process.spawn("taskkill", ["/PID", pid, "/T", "/F"])
-		} else {
-			process.kill(-pid, 'SIGTERM')
-		}
 	}
 	render() {
 		const { projects, currentProjectIndex } = this.state;
