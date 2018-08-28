@@ -1,3 +1,5 @@
+import child_process from 'child_process';
+
 const util = {
     killProcess: function(pid) {
         if (/^win/.test(process.platform)) {

@@ -19,7 +19,7 @@ class ProjectNavItem extends Component {
         
     } 
     onProjectSwitch = (ev) => {
-        ev.stopPropagation();
+        // ev.stopPropagation();
         this.props.onProjectSwitch(ev);
     }
     set = (ev) => {
