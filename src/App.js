@@ -28,8 +28,10 @@ class App extends Component {
 		}
 	}
 	componentDidMount() {
-		//window.addEventListener('beforeunload', this.onBeforeUnload.bind(this));
-		
+		ipcRenderer.on('quit', this.onQuit);
+	}
+	onQuit = () => {
+		this.killAll();
 	}
 	onBeforeUnload = (function() {
 		let hasConfirm = false;

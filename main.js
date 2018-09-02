@@ -35,6 +35,7 @@ app.on('window-all-closed', function () {
 
 function onReady() {
 	createWindow();
+	initTrayMenu();
 	initEvent();
 }
 
@@ -65,45 +66,6 @@ function createWindow() {
 		mainWindow = null;
 	}) */
 
-	//系统托盘右键菜单
-	var trayMenuTemplate = [
-		{
-			label: '设置',
-			click: function () { } //打开相应页面
-		},
-		{
-			label: '帮助',
-			click: function () { }
-		},
-		{
-			label: '关于',
-			click: function () { }
-		},
-		{
-			label: '退出',
-			click: function () {
-				app.quit();
-			}
-		}
-	];
-
-
-	
-
-	const appTray = new Tray(path.join(__dirname, 'app.ico'));//app.ico是app目录下的ico文件
-
-	//图标的上下文菜单
-	const contextMenu = Menu.buildFromTemplate(trayMenuTemplate);
-
-    //设置此托盘图标的悬停提示内容
-	appTray.setToolTip('我的托盘图标');
-	//设置此图标的上下文菜单
-	appTray.setContextMenu(contextMenu);
-	//单击右下角小图标显示应用
-	appTray.on('click', function () {
-		mainWindow.show();
-	})
-
 	mainWindow.on('close', (e) => {
 		//回收BrowserWindow对象
 		if (mainWindow.isMinimized()) {
@@ -127,6 +89,41 @@ function initEvent() {
 				path: files[0]
 			})
 		})
+	})
+}
+
+function initTrayMenu() {
+	//系统托盘右键菜单
+	var trayMenuTemplate = [
+		{
+			label: '设置',
+			click: function () { } //打开相应页面
+		},
+		{
+			label: '关于',
+			click: function () { }
+		},
+		{
+			label: '退出',
+			click: function () {
+				mainWindow.webContents.send('quit');
+				app.quit();
+			}
+		}
+	];
+
+	const appTray = new Tray(path.join(__dirname, 'app.ico'));//app.ico是app目录下的ico文件
+
+	//图标的上下文菜单
+	const contextMenu = Menu.buildFromTemplate(trayMenuTemplate);
+
+	//设置此托盘图标的悬停提示内容
+	appTray.setToolTip('qiyu quick start');
+	//设置此图标的上下文菜单
+	appTray.setContextMenu(contextMenu);
+	//单击右下角小图标显示应用
+	appTray.on('click', function () {
+		mainWindow.show();
 	})
 }
 

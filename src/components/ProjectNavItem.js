@@ -19,7 +19,6 @@ class ProjectNavItem extends Component {
         
     } 
     onProjectSwitch = (ev) => {
-        // ev.stopPropagation();
         this.props.onProjectSwitch(ev);
     }
     set = (ev) => {
@@ -50,7 +49,9 @@ class ProjectNavItem extends Component {
         return (
             <div className="project-nav-item">
                 <label>{project.name}</label>
-                <Switch size="small" checked={project.isOpen} onChange={this.onProjectSwitch} />
+                <span onClick={e => { e.preventDefault(); e.stopPropagation(); }}>
+                    <Switch size="small" checked={project.isOpen} onChange={this.onProjectSwitch} />
+                </span>
                 <Icon type="setting" onClick={this.set}/>
                 <SettingModal
                     wrappedComponentRef={(formRef) => {
