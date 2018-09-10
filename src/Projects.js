@@ -40,6 +40,25 @@ const Projects = [{
         pid: null,
         logs: []
     }]
+}, {
+    id: 'admin',
+    name: '管理端',
+    basePath: getBasePath('admin'),
+    neiPath: 'nei.10681.438b741d9582957f7545e34e2a0e2e59',
+    envType: '',
+    tasks: [{
+        name: 'nei',
+        cmd: 'nei server -k 438b741d9582957f7545e34e2a0e2e59',
+        rpath: '',
+        pid: null,
+        logs: []
+    }, {
+        name: 'mcss',
+        cmd: 'mcss -c mcssflex.json -w 1',
+        rpath: 'src/main/webapp/',
+        pid: null,
+        logs: []
+    }]
 }]
 
 module.exports = Projects;
