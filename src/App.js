@@ -125,7 +125,11 @@ class App extends Component {
 	}
 	addLog(projectIndex, taskIndex, log) {
 		const newProjects = [...this.state.projects];
-		newProjects[projectIndex].tasks[taskIndex].logs.push({
+		var logs = newProjects[projectIndex].tasks[taskIndex].logs;
+		if(logs.length >= 100) {
+			logs.shift();
+		}
+		logs.push({
 			id: + new Date(),
 			text: log
 		});
