@@ -28,7 +28,7 @@ class App extends Component {
 		}
 	}
 	componentDidMount() {
-		ipcRenderer.on('quit', this.onQuit);
+		window.addEventListener('beforeunload', this.onBeforeUnload.bind(this));
 	}
 	onQuit = () => {
 		this.killAll();
@@ -43,7 +43,7 @@ class App extends Component {
 					onOk: () => {
 						this.killAll();
 						hasConfirm = true;
-						// remote.getCurrentWindow().close();
+						remote.getCurrentWindow().close();
 					}
 				})
 			}
@@ -71,7 +71,7 @@ class App extends Component {
 				})
 				project.tasks.forEach((task, taskIndex) => {
 					let cwd = path.join(project.basePath, task.rpath);
-					let childProcess = child_process.exec(task.cmd, { cwd: cwd }, (err, stdout, stderr) => {
+					let childProcess = child_process.exec(task.cmd, { cwd: cwd, maxBuffer: 1024 * 1024 }, (err, stdout, stderr) => {
 						if(err) {
 							this.addLog(projectIndex, taskIndex, err.message);
 						}

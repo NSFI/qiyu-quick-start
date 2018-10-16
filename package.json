@@ -52,12 +52,13 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "main": "electron .",
-    "package": "electron-packager ./ qiyu-quick-start --platform=win32 --arch=x64 --out=./outApp --overwrite --electron-version=2.0.8"
+    "package": "electron-packager ./ qiyu-quick-start --icon=./bitbug-small.ico --platform=win32 --arch=x64 --out=./outApp --overwrite --electron-version=2.0.8"
   },
   "devDependencies": {
     "antd": "^3.8.2",
     "electron": "^2.0.8",
     "electron-packager": "^12.1.1",
+    "gulp": "^3.9.1",
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0"
   },

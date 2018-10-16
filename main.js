@@ -9,6 +9,7 @@ const pkg = require('./package.json') // 引用package.json
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+let appTray = null; // 在这里预先定义，防止托盘被回收
 // project
 
 // This method will be called when Electron has finished
@@ -35,7 +36,7 @@ app.on('window-all-closed', function () {
 
 function onReady() {
 	createWindow();
-	initTrayMenu();
+	// initTrayMenu();
 	initEvent();
 }
 
@@ -67,13 +68,7 @@ function createWindow() {
 	}) */
 
 	mainWindow.on('close', (e) => {
-		//回收BrowserWindow对象
-		if (mainWindow.isMinimized()) {
-			mainWindow = null;
-		} else {
-			e.preventDefault();
-			mainWindow.minimize();
-		}
+		
 	});
 
 }
@@ -107,12 +102,11 @@ function initTrayMenu() {
 			label: '退出',
 			click: function () {
 				mainWindow.webContents.send('quit');
-				app.quit();
 			}
 		}
 	];
 
-	const appTray = new Tray(path.join(__dirname, 'app.ico'));//app.ico是app目录下的ico文件
+	appTray = new Tray(path.join(__dirname, 'bitbug.ico'));//app.ico是app目录下的ico文件
 
 	//图标的上下文菜单
 	const contextMenu = Menu.buildFromTemplate(trayMenuTemplate);
