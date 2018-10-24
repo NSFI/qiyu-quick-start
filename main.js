@@ -4,7 +4,11 @@ const fs = require('fs');
 const url = require('url');
 const path = require('path');
 const child_process = require('child_process');
-const pkg = require('./package.json') // 引用package.json 
+const pkg = require('./package.json');// 引用package.json 
+if (process.platform == 'darwin') {
+	const fixPath = require('fix-path');
+	fixPath();
+}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -21,9 +25,9 @@ app.on('ready', onReady);
 app.on('window-all-closed', function () {
 	// On OS X it is common for applications and their menu bar
 	// to stay active until the user quits explicitly with Cmd + Q
-	if (process.platform !== 'darwin') {
+	// if (process.platform !== 'darwin') {
 		app.quit()
-	}
+	// }
 })
 
 /* app.on('activate', function () {
