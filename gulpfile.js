@@ -7,11 +7,8 @@ gulp.task('build', function() {
 })
 
 gulp.task('package', ['build'], function() {
+    del(['outApp']);
     execSync('electron-packager ./ qiyu-quick-start --icon=./bitbug-small.ico --platform=win32 --arch=x64 --out=./outApp --overwrite --electron-version=2.0.8 --ignore="node_modules/*"');
-
-    /* del([
-        'outApp/qiyu-quick-start/resources/app/node_modules'
-    ]) */
 })
 
 gulp.task('default', ['build', 'package']);

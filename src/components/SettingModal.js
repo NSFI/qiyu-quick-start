@@ -46,17 +46,18 @@ const SettingModal = Form.create()(
                                 />
                             )}
                         </FormItem>
-                        
-                        <FormItem label="环境类型">
-                            {getFieldDecorator('envType', {
-        
-                            })(
-                                <RadioGroup>
-                                    <Radio value="debug">debug</Radio>
-                                    <Radio value="test">test</Radio>
-                                </RadioGroup>
-                            )}
-                        </FormItem>
+                        {project.envType != undefined ? 
+                            <FormItem label="环境类型">
+                                {getFieldDecorator('envType', {
+            
+                                })(
+                                    <RadioGroup>
+                                        <Radio value="debug">debug</Radio>
+                                        <Radio value="test">test</Radio>
+                                    </RadioGroup>
+                                )}
+                            </FormItem> : null
+                        }
                     </Form>
                 </Modal>
             );
