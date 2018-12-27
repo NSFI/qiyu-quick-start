@@ -9,6 +9,7 @@
 # production
 /build
 /outApp
+/outAppMac
 
 # misc
 .DS_Store
