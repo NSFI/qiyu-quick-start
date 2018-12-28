@@ -12,6 +12,6 @@ gulp.task('package', ['build'], function() {
 })
 
 gulp.task('packagemac', ['build'], function() {
-    del(['outAppMac']);
-    execSync('electron-packager ./ qiyu-quick-start --icon=./bitbug-small.icns --platform=darwin --arch=x64 --out=./outAppMac --overwrite --electron-version=2.0.8');
+    del(['outApp']);
+    execSync('electron-packager ./ qiyu-quick-start --icon=./bitbug-small.icns --platform=darwin --arch=x64 --out=./outApp --overwrite --electron-version=2.0.8');
 })
