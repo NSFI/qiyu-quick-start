@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "main": "main.js",
-  "DEV": false,
   "homepage": ".",
   "dependencies": {
     "autoprefixer": "7.1.6",
@@ -53,7 +52,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "main": "electron .",
+    "main": "electron . --dev",
+    "main-prod": "electron .",
     "package": "electron-packager ./ qiyu-quick-start --icon=./bitbug-small.ico --platform=win32 --arch=x64 --out=./outApp --overwrite --electron-version=2.0.8",
     "macpackage": "electron-packager ./ qiyu-quick-start --icon=./bitbug-small.icns --platform=darwin --arch=x64 --out=./outApp --overwrite --electron-version=2.0.8"
   },

@@ -49,7 +49,7 @@ function createWindow() {
 	mainWindow = new BrowserWindow({ width: 600, height: 600 })
 
 	//判断是否是开发模式 
-	if (pkg.DEV) {
+	if (process.argv.indexOf('--dev') > 0) {
 		mainWindow.loadURL("http://localhost:3000/")
 	} else {
 		mainWindow.loadURL(url.format({
