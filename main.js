@@ -4,7 +4,6 @@ const fs = require('fs');
 const url = require('url');
 const path = require('path');
 const child_process = require('child_process');
-const pkg = require('./package.json');// 引用package.json 
 if (process.platform == 'darwin') {
 	const fixPath = require('fix-path');
 	fixPath();
@@ -46,7 +45,7 @@ function onReady() {
 
 function createWindow() {
 	// Create the browser window.
-	mainWindow = new BrowserWindow({ width: 600, height: 600 })
+	mainWindow = new BrowserWindow({ width: 800, height: 600 })
 
 	//判断是否是开发模式 
 	if (process.argv.indexOf('--dev') > 0) {
