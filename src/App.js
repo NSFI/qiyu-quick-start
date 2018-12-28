@@ -22,7 +22,7 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentProjectIndex: 0,
+			currentProjectIndex: '0',
 			projects: Projects,
 			settingModalVisible: false
 		}
@@ -125,7 +125,7 @@ class App extends Component {
 	}
 	addLog(projectIndex, taskIndex, log) {
 		const newProjects = [...this.state.projects];
-		var logs = newProjects[projectIndex].tasks[taskIndex].logs;
+		var logs = [...this.state.projects[projectIndex].tasks[taskIndex].logs];
 		if(logs.length >= 100) {
 			logs.shift();
 		}
@@ -133,6 +133,7 @@ class App extends Component {
 			id: + new Date(),
 			text: log
 		});
+		newProjects[projectIndex].tasks[taskIndex].logs = logs;
 		this.setState({
 			projects: newProjects
 		})

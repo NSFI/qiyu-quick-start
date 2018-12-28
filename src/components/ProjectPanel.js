@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Menu } from 'antd';
-
+import Logs from './Logs';
 
 class projectPanel extends Component {
     static propTypes = {
@@ -11,7 +11,7 @@ class projectPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentTaskIndex: 0
+            currentTaskIndex: '0'
         }
     }
     onTaskChange = (ev) => {
@@ -23,7 +23,7 @@ class projectPanel extends Component {
 
     }
     render() {
-        const { tasks } = this.props.project;
+        const { tasks, id:projectId } = this.props.project;
         const { currentTaskIndex } = this.state;
         return (
             <div className="project-panel">
@@ -45,11 +45,11 @@ class projectPanel extends Component {
                     </Menu>
                 </div>
                 <div className="log-area">
-                    {tasks[currentTaskIndex].logs.map((log) => {
-                        return (
-                            <p key={log.id} className="log-item">{log.text}</p>
-                        )
-                    })}
+                    <Logs
+                        projectId={projectId}
+                        taskIndex={currentTaskIndex}
+                        logs={tasks[currentTaskIndex].logs}
+                    ></Logs>
                 </div>
             </div>
         )

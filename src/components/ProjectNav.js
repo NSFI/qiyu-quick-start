@@ -7,7 +7,7 @@ import ProjectNavItem from './ProjectNavItem';
 class ProjectNav extends Component {
     static propTypes = {
         projects: PropTypes.array.isRequired,
-        current: PropTypes.number,
+        current: PropTypes.string,
         onChange: PropTypes.func.isRequired,
         onProjectSwitch: PropTypes.func.isRequired,
         onSet: PropTypes.func.isRequired
