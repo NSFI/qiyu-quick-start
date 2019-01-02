@@ -14,23 +14,24 @@
 安装依赖  
 `npm i`   
 打包应用，windows和mac系统下指令有所不同
-- windows: `gulp package`
-- mac: `gulp packagemac`   
+- windows：`gulp package`
+- mac：`gulp packagemac`   
   
 在项目根目录outApp文件夹下可找到打包后的应用
-- windows: qiyu-quick-start-win32-x64文件夹
-- mac: 
+- windows：qiyu-quick-start-win32-x64文件夹
+- mac：qiyu-quick-start-darwin-x64文件夹
 
 ### 修改配置的工程和指令
-- windows:    
+- windows：    
 修改qiyu-quick-start-win32-x64\resources\app\setting.json即可
-- mac:   
+- mac：    
+右键qiyu-quick-start-darwin-x64/qiyu-quick-start.app，选择“显示包内容”，进入Contents/Resources/app目录，修改setting.json文件即可
 
 ### 本地开发
 - 开发环境  
-  `npm start`启动web页面devServer；   
-  `npm run main`启动electron应用
+  `npm start` 启动web页面devServer；   
+  `npm run main` 启动electron应用
 - 生产环境   
-  `npm run build`打包web代码；   
-  `npm run main-prod`启动electron应用
+  `npm run build` 打包web代码；   
+  `npm run main-prod` 启动electron应用
 
