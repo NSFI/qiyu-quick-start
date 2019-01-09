@@ -71,7 +71,7 @@ class App extends Component {
 				})
 				project.tasks.forEach((task, taskIndex) => {
 					let cwd = path.join(project.basePath, task.rpath);
-					let childProcess = child_process.exec(task.cmd, { cwd: cwd, maxBuffer: 1024 * 1024 }, (err, stdout, stderr) => {
+					let childProcess = child_process.exec(task.cmd, { cwd: cwd, maxBuffer: 100*1024 * 1024 }, (err, stdout, stderr) => {
 						if(err) {
 							this.addLog(projectIndex, taskIndex, err.message);
 						}
