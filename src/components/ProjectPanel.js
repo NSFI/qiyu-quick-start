@@ -14,6 +14,13 @@ class projectPanel extends Component {
             currentTaskIndex: '0'
         }
     }
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.project != this.props.project) {
+            this.setState({
+                currentTaskIndex: '0'
+            })
+        }
+    }
     onTaskChange = (ev) => {
         this.setState({
             currentTaskIndex: ev.key
